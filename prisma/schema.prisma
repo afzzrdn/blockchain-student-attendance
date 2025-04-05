@@ -1,0 +1,39 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "mysql"
+  url      = env("DATABASE_URL")
+}
+
+model User {
+  id        Int       @id @default(autoincrement())
+  email     String    @unique
+  password  String
+  nama      String
+  nim       String    @unique
+  fakultas  String
+  jurusan   String
+  absensi   Absensi[] // relasi ke absensi
+}
+
+model Kelas {
+  id        Int       @id @default(autoincrement())
+  kode      String    @unique
+  nama      String
+  hari      String
+  jamMulai  String
+  jamSelesai String
+  absensi   Absensi[]
+}
+
+
+model Absensi {
+  id           Int       @id @default(autoincrement())
+  mahasiswa    User      @relation(fields: [mahasiswaId], references: [id])
+  mahasiswaId  Int
+  kelas        Kelas     @relation(fields: [kelasId], references: [id])
+  kelasId      Int
+  waktu        DateTime  @default(now())
+}
