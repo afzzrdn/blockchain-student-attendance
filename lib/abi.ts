@@ -1,6 +1,7 @@
 export const contractAddress = "0x5fbdb2315678afecb367f032d93f642f64180aa3"
 export const contractABI = [
     {
+
       "anonymous": false,
       "inputs": [
         {
@@ -13,6 +14,12 @@ export const contractABI = [
           "indexed": false,
           "internalType": "string",
           "name": "kodeKelas",
+          "type": "string"
+        },
+        {
+          "indexed": false,
+          "internalType": "string",
+          "name": "nama",
           "type": "string"
         },
         {
@@ -38,6 +45,11 @@ export const contractABI = [
         {
           "internalType": "string",
           "name": "nim",
+          "type": "string"
+        },
+        {
+          "internalType": "string",
+          "name": "nama",
           "type": "string"
         },
         {
@@ -76,6 +88,11 @@ export const contractABI = [
         },
         {
           "internalType": "string",
+          "name": "nama",
+          "type": "string"
+        },
+        {
+          "internalType": "string",
           "name": "waktu",
           "type": "string"
         }
@@ -92,6 +109,11 @@ export const contractABI = [
             {
               "internalType": "string",
               "name": "nim",
+              "type": "string"
+            },
+            {
+              "internalType": "string",
+              "name": "nama",
               "type": "string"
             },
             {
@@ -136,6 +158,11 @@ export const contractABI = [
         {
           "internalType": "string",
           "name": "_kodeKelas",
+          "type": "string"
+        },
+        {
+          "internalType": "string",
+          "name": "_nama",
           "type": "string"
         },
         {

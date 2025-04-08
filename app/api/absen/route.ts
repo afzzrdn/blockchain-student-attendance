@@ -1,4 +1,3 @@
-// app/api/absensi/route.ts
 import { NextResponse } from "next/server";
 import prisma from "@/lib/prisma";
 import { logAbsensi } from "@/lib/blockchain";
@@ -8,7 +7,6 @@ export async function POST(req: Request) {
     const body = await req.json();
     const { nim, kodeKelas } = body;
 
-    // Validasi mahasiswa & kelas
     const user = await prisma.user.findUnique({
       where: { nim },
     });
@@ -19,13 +17,13 @@ export async function POST(req: Request) {
 
     if (!user || !kelas) {
       return NextResponse.json(
-        { message: "Mahasiswa atau kelas tidak ditemukan" },
+        { message: "Kelas tidak ditemukan" },
         { status: 404 }
       );
     }
 
-    // Simpan ke database lokal (MySQL via Prisma)
-    const absen = await prisma.absensi.create({
+
+    await prisma.absensi.create({
       data: {
         mahasiswaId: user.id,
         kelasId: kelas.id,
@@ -33,7 +31,7 @@ export async function POST(req: Request) {
     });
 
     // Simpan ke Blockchain
-    await logAbsensi(nim, kodeKelas, new Date().toISOString());
+    await logAbsensi(nim, kodeKelas, kelas.nama, new Date().toISOString());
 
     return NextResponse.json({ message: "Absensi berhasil" });
   } catch (error: any) {
