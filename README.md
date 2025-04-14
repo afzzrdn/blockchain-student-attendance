@@ -16,7 +16,8 @@ Attendance system using blockchain to store attendance data
 ## 🛠️ Tech Stack
 
 - **Frontend**: Next.js, Tailwind CSS
-- **Backend**:  Next.js, Solidity
+- **Backend**:  Next.js
+- **Smart Contract**: Solidity
 - **Database**: SQLite
 - **Deployment**: -
 
